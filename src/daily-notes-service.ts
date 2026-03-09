@@ -124,6 +124,9 @@ export class DailyNotesService {
 		if (!this.dailyNoteExists(nextDate)) {
 			try {
 				await this.createDailyNote(nextDate);
+
+				// Show notification if note was created
+				new Notice("Daily note created ✓");
 			} catch (error) {
 				let errorMessage = "Unknown error";
 				if (error instanceof Error) {
